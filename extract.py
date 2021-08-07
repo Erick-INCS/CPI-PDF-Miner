@@ -4,7 +4,10 @@
 import re
 import tabula
 import pdftotext
+import pandas as pd
+from collections import Counter
 from io import StringIO
+from sklearn.cluster import AffinityPropagation
 from statistics import mode
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
@@ -13,8 +16,11 @@ from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.pdfpage import PDFPage
 from pdfminer.pdfparser import PDFParser
 
+import matplotlib.pyplot as plt
+
 
 RE_EX = r'(tabla).*\d.*Síntesis de resultados por dimensión y subdimensión'
+
 
 def extract_table(path):
     """ Search the corresponging page """
@@ -35,7 +41,6 @@ def extract_table(path):
             if finder:
                 print('Table finded.')
                 pages.append(page_num)
-                print(output_string.getvalue())
 
             page_num += 1
             if pages and page_num - pages[-1] > 1:
@@ -44,25 +49,21 @@ def extract_table(path):
 
     print('Generating table in', pages)
     table = tabula.read_pdf(path, pages=pages, pandas_options={'header': None})
-    columns = ['section_id', 'label', 'municipio', 'aglomeracion_urbana']
-    return extract_text(path, pages)
-    """
+    # return extract_text(path, pages)
     final_table = table.copy()
-    if isinstance(table, list):
-        print('table:', table, '\n\n\n')
-        final_table = table[0].rename(columns={
-            table[0].columns[i]: l for i, l in enumerate(columns)})
-        for current in table[1:]:
-            if len(final_table.columns) != len(current.columns):
-                print(f'Incompatible tables in {path}')
-                continue
+    # if isinstance(table, list):
+        # print('table:', table, '\n\n\n')
+        # final_table = table[0].rename(columns={
+        #     table[0].columns[i]: l for i, l in enumerate(columns)})
+        # for current in table[1:]:
+        #     if len(final_table.columns) != len(current.columns):
+        #         print(f'Incompatible tables in {path}')
+        #         continue
 
-            current = current.rename(columns={
-                current.columns[i]: l for i, l in enumerate(columns)})
-            final_table = final_table.append(current)
-
-    return final_table.reset_index()
-    """
+        #     current = current.rename(columns={
+        #         current.columns[i]: l for i, l in enumerate(columns)})
+        #     final_table = final_table.append(current)
+    return table
 
 
 def extract_text(path, pages):
@@ -79,15 +80,24 @@ def extract_text(path, pages):
 
 def isolate(pages):
     """ Remove irrelevant content """
-    # First cut
+
+    filter_regex = [
+        r' *Consolidar políticas *Fortalecer políticas *Priorizar políticas.*',
+        r' *urbanas +urbanas +urbanas.*']
+
     c_ix = 0
     while c_ix < len(pages):
-        print(pages[c_ix])
         pages[c_ix] = pages[c_ix].splitlines()
         for ln_ix, line in enumerate(pages[c_ix]):
             if re.search(RE_EX, line, re.IGNORECASE):
                 pages[c_ix] = pages[c_ix][ln_ix+1:]
                 break
+
+        for rgex in filter_regex:
+            for ln_ix, line in enumerate(pages[c_ix]):
+                if re.search(rgex, line, re.IGNORECASE):
+                    pages[c_ix] = pages[c_ix][:ln_ix]
+                    break
 
         pages[c_ix] = '\n'.join(pages[c_ix])
         c_ix += 1
@@ -95,50 +105,85 @@ def isolate(pages):
     return pages
 
 
-def add_separations(pages):
+def squeeze(a_list):
+    """ Reduces dimentionallity """
+    length = len(a_list)
+    while length >= 0:
+        current = a_list.pop(0)
+        if isinstance(current, list):
+            a_list.extend(current)
+        else:
+            a_list.append(current)
+        length -= 1
+    return a_list
+
+
+def add_separations(pages, space_tolerance=3):
     """ A bad way to add row separations """
     for p_ix, page in enumerate(pages):
         page = re.sub(' {3,}', '|', page)
 
         page_lines = pages[p_ix].splitlines()
         page_sep_ixs = page.splitlines()
-        print(page_sep_ixs)
         page_sep_ixs = list(map(
             lambda ix_ln: list(map(
                 page_lines[ix_ln[0]].index,
                 filter(lambda e: e, ix_ln[1].split('|')))),
             enumerate(page_sep_ixs)))
-        print(page_sep_ixs)
+        squeeze(page_sep_ixs)
 
-        def count_rows(line):
-            return len(list(filter(lambda c: c == '|', line)))
+        tb_cols = {}
+        for num in set(page_sep_ixs):
+            added = False
 
-        def is_numeric(string):
-            """ Converts string to float """
-            try:
-                float(string)
-                return True
-            except ValueError:
-                return False
+            for key in tb_cols:
+                if (tb_cols[key]['min'] - space_tolerance <= num) and\
+                   (tb_cols[key]['max'] + space_tolerance >= num):
 
-        def filter_table(tb_page):
-            tb_page = tb_page.splitlines()
-            rows_mode = mode(map(count_rows, tb_page))
-            min_page = list(filter(
-                lambda r: count_rows(r) == rows_mode,
-                tb_page))
-            return min_page
+                    tb_cols[key]['min'] = min(num, tb_cols[key]['min'])
+                    tb_cols[key]['max'] = max(num, tb_cols[key]['max'])
+                    added = True
+            if not added:
+                tb_cols[len(tb_cols.keys())] = {
+                        'max': num,
+                        'min': num}
 
-            # TODO: Eliminar outliers
-            # TODO: Definir los indices para las separaciones de las columnas
-            # tb_page = filter(
-              #   lambda ln: not(count_rows(ln) == rows_mode or ((count_rows(ln) - rows_mode <= 1) and
-                #           ('|' in ln) and
-                 #           (sum(map(is_numeric, ln.split('|'))) > 0))),
-                # tb_page)
-            # return list(tb_page)
+        # Merge lines
+        to_pop = []
+        for key in tb_cols:
+            if key in to_pop:
+                continue
 
-        pages[p_ix] = filter_table(page)
+            other_keys = list(tb_cols.keys()).copy()
+            other_keys.remove(key)
+            for o_key in other_keys:
+                if not ((tb_cols[key]['min'] - space_tolerance > tb_cols[o_key]['max']) or
+                        (tb_cols[key]['max'] + space_tolerance < tb_cols[o_key]['min'])):
+                    tb_cols[key]['min'] = min(
+                            tb_cols[key]['min'],
+                            tb_cols[o_key]['min'])
+
+                    tb_cols[key]['max'] = max(
+                        tb_cols[key]['max'],
+                        tb_cols[o_key]['max'])
+
+                    to_pop.append(o_key)
+
+        for poop in to_pop:
+            tb_cols.pop(poop)
+
+        print('Columns: ', tb_cols, '\n\n')
+
+        tb_cols = list(map(lambda e: e['min'], tb_cols.values()))
+        tb_cols.sort()
+
+        line_length = max(map(len, page_lines))
+
+        pages[p_ix] = pd.DataFrame(map(
+            lambda ln: [ln[tb_cols[pk[0]]:pk[1]]
+                        for pk in enumerate(tb_cols[1:] + [line_length])],
+            page_lines))
+
     return pages
 
 
@@ -147,6 +192,7 @@ if __name__ == '__main__':
     my_table = extract_table(TB_PATH)
     my_table = isolate(my_table)
     my_table = add_separations(my_table)
+    print(my_table[0])
     """print(my_table.head())
     print(my_table.tail())
     print(my_table.columns)
