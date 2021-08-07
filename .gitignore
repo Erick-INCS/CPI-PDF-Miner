@@ -5,3 +5,4 @@ env
 __pycache__
 !CPI_Mex.csv
 !Names.csv
+!CPI_Mex_full.csv
