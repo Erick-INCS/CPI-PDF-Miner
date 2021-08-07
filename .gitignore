@@ -4,3 +4,4 @@ env
 *.pdf
 __pycache__
 !CPI_Mex.csv
+!Names.csv

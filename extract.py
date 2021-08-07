@@ -51,6 +51,7 @@ def extract_table(path):
     # print(f'\n\n{len(table)} tables in pages {pages} with default method.')
     # print('Executing alternative method!\n')
     table = extract_text(path, pages)
+    print(table[0])
     table = isolate(table)
     table = add_separations(table)
 
@@ -204,8 +205,9 @@ def extract_and_save(file_path, out_dir=''):
 
 
 if __name__ == '__main__':
-    # file_path = 'corrupt/05033_San_Pedro.pdf'
-    path = 'pdfs/2015_06009_Tecomán.pdf'
+    # path = 'pdfs/2018_11014_Dolores_Hidalgo_Cuna_de_la_Independencia_Nacional.pdf'
+    # path = 'pdfs/2018_15070_La_Paz.pdf'
+    path = 'pdfs/2015_03003_La_Paz.pdf'
     my_table = extract_table(path)
 
     print(len(my_table), 'tables')

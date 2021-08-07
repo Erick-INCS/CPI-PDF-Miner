@@ -14,11 +14,17 @@ def read_datasets(d_dir):
     files = d_dir + pd.Series(listdir(d_dir))
     files = Counter(files.map(lambda fn: fn[:-6]))
     names = list(map(lambda s: ' '.join(s.split('_')[2:]), files.keys()))
+    claves = list(map(
+        lambda s: s.split('/')[-1].split('_')[1], files.keys()))
+    periodos = list(map(
+        lambda s: s.split('/')[-1].split('_')[0], files.keys()))
+
     files = pd.Series([
         [f'{fn}_{i}.csv' for i in range(files[fn])] for fn in files])
 
-    return files.map(
-            lambda fl: [pd.read_csv(name, dtype=str) for name in fl]), names
+    return (files.map(
+            lambda fl: [pd.read_csv(name, dtype=str) for name in fl]),
+           names, claves, periodos)
 
 
 def check_num_format(str_num):
@@ -38,11 +44,12 @@ def is_invalid_col(dataset, col):
     return dataset[col].apply(check_num_format).sum() == 0
 
 
-def join_datasets(ds_list, name='', index=-1):
+def join_datasets(ds_list, name='', index=-1, clave='', periodo=''):
     """ Join multiple datasets of the same F.E. """
     # First cut
     first = ds_list[0]
     first['0'] = first['0'].str.strip()
+    # print(first)
 
     if not name:
         name = first[:first[first['0'] == 'ID'].index[0]]
@@ -152,17 +159,20 @@ def join_datasets(ds_list, name='', index=-1):
         ds_list).reset_index().drop(['index'], axis=1)
 
     ds_list['estado'] = name
+    ds_list['clave'] = clave
+    ds_list['periodo'] = periodo
     return ds_list
 
 
 if __name__ == '__main__':
-    datasets, ds_names = read_datasets('data/')
+    datasets, ds_names, ds_claves, ds_periodos = read_datasets('data/')
 
     the_dataset = reduce(
             lambda dsa, dsb: dsa.append(dsb),
             list(map(
                 lambda zp: join_datasets(*zp),
-                zip(datasets, ds_names, range(len(ds_names))))
+                zip(datasets, ds_names, range(len(ds_names)), ds_claves,
+                    ds_periodos))
             )
     )
 
@@ -170,3 +180,4 @@ if __name__ == '__main__':
     the_dataset = the_dataset.drop(['index'], axis=1)
     the_dataset.to_csv('CPI_Mex.csv', index=False)
     print('Dataset', the_dataset, 'saved')
+    # join_datasets(datasets.iloc[100], ds_names[100])

@@ -1,0 +1,306 @@
+estado,clave,municipio,periodo
+Aguascalientes,01001,Aguascalientes.,2015
+Aguascalientes,01011,San Francisco de los Romo.,2015
+Baja California,02002,Mexicali.,2015
+Baja California,02004,Tijuana.,2015
+Baja California Sur,03003,La Paz.,2015
+Campeche,04002,Campeche.,2015
+Coahuila de Zaragoza,05002,Acuña.,2015
+Coahuila de Zaragoza,05025,Piedras Negras.,2015
+Coahuila de Zaragoza,05027,Ramos Arizpe.,2015
+Coahuila de Zaragoza,05030,Saltillo.,2015
+Coahuila de Zaragoza,05035,Torreón.,2015
+Colima,06002,Colima.,2015
+Colima,06007,Manzanillo.,2015
+Colima,06009,Tecomán.,2015
+Colima,06010,Villa de Álvarez.,2015
+Ciudad de México,09010,Álvaro Obregón.,2015
+Ciudad de México,09011,Tláhuac.,2015
+Ciudad de México,09012,Tlalpan.,2015
+Ciudad de México,09013,Xochimilco.,2015
+Ciudad de México,09014,Benito Juárez.,2015
+Ciudad de México,09015,Cuauhtémoc.,2015
+Ciudad de México,09016,Miguel Hidalgo.,2015
+Ciudad de México,09017,Venustiano Carranza.,2015
+Durango,10005,Durango.,2015
+Durango,10007,Gómez Palacio.,2015
+Guanajuato,11005,Apaseo el Grande.,2015
+Guanajuato,11007,Celaya.,2015
+Guanajuato,11015,Guanajuato.,2015
+Guanajuato,11017,Irapuato.,2015
+Coahuila de Zaragoza,05018,Monclova.,2018
+Coahuila de Zaragoza,05033,San Pedro.,2018
+Chiapas,07017,Cintalapa.,2018
+Chiapas,07019,Comitán de Domínguez.,2018
+Chiapas,07023,Chamula.,2018
+Chiapas,07027,Chiapa de Corzo.,2018
+Chiapas,07031,Chilón.,2018
+Chiapas,07034,Frontera Comalapa.,2018
+Chiapas,07040,Huixtla.,2018
+Chiapas,07052,Las Margaritas.,2018
+Chiapas,07057,Motozintla.,2018
+Chiapas,07059,Ocosingo.,2018
+Chiapas,07061,Ocozocoautla de Espinosa.,2018
+Chiapas,07065,Palenque.,2018
+Chiapas,07089,Tapachula.,2015
+Chiapas,07101,Tuxtla Gutiérrez.,2015
+Chihuahua,08004,Aquiles Serdán.,2015
+Chihuahua,08017,Cuauhtémoc.,2015
+Chihuahua,08019,Chihuahua.,2015
+Chihuahua,08021,Delicias.,2015
+Chihuahua,08037,Juárez.,2015
+Ciudad de México,09002,Azcapotzalco.,2015
+Ciudad de México,09003,Coyoacán.,2015
+Ciudad de México,09004,Cuajimalpa de Morelos.,2015
+Ciudad de México,09005,Gustavo A. Madero.,2015
+Ciudad de México,09006,Iztacalco.,2015
+Ciudad de México,09007,Iztapalapa.,2015
+Ciudad de México,09008,La Magdalena Contreras.,2015
+Chiapas,07012,Berriozábal.,2015
+Ciudad de México,09009,Milpa Alta.,2015
+Guanajuato,11020,León.,2015
+Jalisco,14051,Juanacatlán.,2015
+Estado de México,15058,Nezahualcóyotl.,2015
+Nayarit,18017,Tepic.,2015
+Nuevo León,19048,Santa Catarina.,2015
+San Luis Potosí,24028,San Luis Potosí.,2015
+Tamaulipas,28032,Reynosa.,2015
+Coahuila de Zaragoza,05017,Matamoros.,2018
+Chiapas,07069,Pijijiapan.,2018
+Guanajuato,11031,San Francisco del Rincón.,2018
+Estado de México,15005,Almoloya de Juárez.,2018
+Estado de México,15042,Ixtlahuaca.,2018
+Estado de México,15099,Texcoco.,2018
+Morelos,17006,Cuautla.,2018
+Oaxaca,20515,Santo Domingo Tehuantepec.,2018
+Sinaloa,25018,Navolato.,2018
+Chiapas,07078,San Cristóbal de las Casas.,2018
+Chiapas,07099,La Trinitaria.,2018
+Chiapas,07106,Venustiano Carranza.,2018
+Chiapas,07107,Villa Corzo.,2018
+Chiapas,07108,Villaflores.,2018
+Chihuahua,08032,Hidalgo del Parral.,2018
+Durango,10012,Lerdo.,2018
+Guanajuato,11002,Acámbaro.,2018
+Guanajuato,11003,San Miguel de Allende.,2018
+Guanajuato,11014,Dolores Hidalgo Cuna de la Independencia Nacional.,2018
+Guanajuato,11023,Pénjamo.,2018
+Guanajuato,11028,Salvatierra.,2018
+Guanajuato,11030,San Felipe.,2018
+Guanajuato,11027,Salamanca.,2015
+Guanajuato,11037,Silao de la Victoria.,2015
+Guanajuato,11044,Villagrán.,2015
+Guerrero,12001,Acapulco de Juárez.,2015
+Guerrero,12029,Chilpancingo de los Bravo.,2015
+Hidalgo,13013,Atotonilco de Tula.,2015
+Hidalgo,13028,Huejutla de Reyes.,2015
+Hidalgo,13048,Pachuca de Soto.,2015
+Hidalgo,13051,Mineral de la Reforma.,2015
+Hidalgo,13069,Tizayuca.,2015
+Hidalgo,13077,Tulancingo de Bravo.,2015
+Jalisco,14023,Zapotlán el Grande.,2015
+Jalisco,14039,Guadalajara.,2015
+Jalisco,14044,Ixtlahuacán de los Membrillos.,2015
+Jalisco,14053,Lagos de Moreno.,2015
+Jalisco,14063,Ocotlán.,2015
+Jalisco,14067,Puerto Vallarta.,2015
+Jalisco,14070,El Salto.,2015
+Jalisco,14083,Tala.,2015
+Jalisco,14097,Tlajomulco de Zúñiga.,2015
+Jalisco,14098,San Pedro Tlaquepaque.,2015
+Jalisco,14101,Tonalá.,2015
+Jalisco,14120,Zapopan.,2015
+Estado de México,15025,Chalco.,2015
+Estado de México,15033,Ecatepec de Morelos.,2015
+Estado de México,15035,Huehuetoca.,2015
+Estado de México,15051,Lerma.,2015
+Estado de México,15057,Naucalpan de Juárez.,2015
+Guanajuato,11033,San Luis de la Paz.,2018
+Guanajuato,11042,Valle de Santiago.,2018
+Guerrero,12028,Chilapa de Álvarez.,2018
+Guerrero,12035,Iguala de la Independencia.,2018
+Guerrero,12038,Zihuatanejo de Azueta.,2018
+Guerrero,12055,Taxco de Alarcón.,2018
+Guerrero,12066,Tlapa de Comonfort.,2018
+Hidalgo,13008,Apan.,2018
+Hidalgo,13061,Tepeapulco.,2018
+Hidalgo,13075,Tolcayuca.,2018
+Hidalgo,13076,Tula de Allende.,2018
+Jalisco,14093,Tepatitlán de Morelos.,2018
+Jalisco,14124,Zapotlanejo.,2018
+Estado de México,15002,Acolman.,2018
+Estado de México,15009,Amecameca.,2018
+Estado de México,15011,Atenco.,2018
+Estado de México,15013,Atizapán de Zaragoza.,2018
+Estado de México,15014,Atlacomulco.,2018
+Estado de México,15020,Coacalco de Berriozábal.,2018
+Estado de México,15023,Coyotepec.,2018
+Estado de México,15024,Cuautitlán.,2018
+Estado de México,15028,Chiautla.,2018
+Estado de México,15029,Chicoloapan.,2018
+Estado de México,15030,Chiconcuac.,2018
+Estado de México,15031,Chimalhuacán.,2018
+Estado de México,15036,Hueypoxtla.,2018
+Estado de México,15037,Huixquilucan.,2018
+Estado de México,15039,Ixtapaluca.,2018
+Estado de México,15044,Jaltenco.,2018
+Estado de México,15053,Melchor Ocampo.,2018
+Estado de México,15054,Metepec.,2018
+Estado de México,15070,La Paz.,2018
+Estado de México,15074,San Felipe del Progreso.,2018
+Estado de México,15075,San Martín de las Pirámides.,2018
+Estado de México,15084,Temascalapa.,2018
+Estado de México,15087,Temoaya.,2018
+Estado de México,15088,Tenancingo.,2018
+Estado de México,15091,Teoloyucan.,2018
+Estado de México,15092,Teotihuacán.,2018
+Estado de México,15093,Tepetlaoxtoc.,2018
+Estado de México,15095,Tepotzotlán.,2018
+Estado de México,15096,Tequixquiac.,2018
+Estado de México,15059,Nextlalpan.,2015
+Estado de México,15060,Nicolás Romero.,2015
+Estado de México,15081,Tecámac.,2015
+Estado de México,15104,Tlalnepantla de Baz.,2015
+Estado de México,15106,Toluca.,2015
+Estado de México,15120,Zumpango.,2015
+Michoacán,16052,Lázaro Cárdenas.,2015
+Michoacán,16053,Morelia.,2015
+Michoacán,16069,La Piedad.,2015
+Michoacán,16088,Tarímbaro.,2015
+Michoacán,16102,Uruapan.,2015
+Michoacán,16108,Zamora.,2015
+Morelos,17007,Cuernavaca.,2015
+Morelos,17018,Temixco.,2015
+Estado de México,15100,Tezoyuca.,2018
+Estado de México,15101,Tianguistenco.,2018
+Estado de México,15103,Tlalmanalco.,2018
+Estado de México,15108,Tultepec.,2018
+Estado de México,15109,Tultitlán.,2018
+Estado de México,15113,Villa Guerrero.,2018
+Estado de México,15114,Villa Victoria.,2018
+Estado de México,15118,Zinacantepec.,2018
+Estado de México,15121,Cuautitlán Izcalli.,2018
+Estado de México,15122,Valle de Chalco Solidaridad.,2018
+Michoacán,16006,Apatzingán.,2018
+Michoacán,16034,Hidalgo.,2018
+Michoacán,16112,Zitácuaro.,2018
+Morelos,17004,Ayala.,2018
+Nayarit,18020,Bahía de Banderas.,2015
+Nuevo León,19006,Apodaca.,2015
+Nuevo León,19009,Cadereyta Jiménez.,2015
+Nuevo León,19010,El Carmen.,2015
+Nuevo León,19012,Ciénega de Flores.,2015
+Nuevo León,19018,García.,2015
+Nuevo León,19021,General Escobedo.,2015
+Nuevo León,19025,General Zuazua.,2015
+Nuevo León,19026,Guadalupe.,2015
+Nuevo León,19031,Juárez.,2015
+Nuevo León,19039,Monterrey.,2015
+Nuevo León,19041,Pesquería.,2015
+Nuevo León,19045,Salinas Victoria.,2015
+Nuevo León,19046,San Nicolás de los Garza.,2015
+Morelos,17008,Emiliano Zapata.,2018
+Morelos,17011,Jiutepec.,2018
+Morelos,17012,Jojutla.,2018
+Morelos,17017,Puente de Ixtla.,2018
+Morelos,17028,Xochitepec.,2018
+Morelos,17029,Yautepec.,2018
+Nuevo León,19019,San Pedro Garza García.,2018
+Nuevo León,19049,Santiago.,2018
+Oaxaca,20039,Heroica Ciudad de Huajuapan de León.,2018
+Oaxaca,20043,Heroica Ciudad de Juchitán de Zaragoza.,2018
+Oaxaca,20079,Salina Cruz.,2018
+Oaxaca,20184,San Juan Bautista Tuxtepec.,2018
+Oaxaca,20385,Santa Cruz Xoxocotlán.,2018
+Oaxaca,20067,Oaxaca de Juárez.,2015
+Puebla,21015,Amozoc.,2015
+Puebla,21034,Coronango.,2015
+Puebla,21074,Huejotzingo.,2015
+Puebla,21114,Puebla.,2015
+Puebla,21119,San Andrés Cholula.,2015
+Puebla,21140,San Pedro Cholula.,2015
+Querétaro,22004,Cadereyta de Montes.,2015
+Querétaro,22011,El Marqués.,2015
+Querétaro,22014,Querétaro.,2015
+Querétaro,22016,San Juan del Río.,2015
+Quintana Roo,23004,Othón P. Blanco.,2015
+Quintana Roo,23005,Benito Juárez.,2015
+Quintana Roo,23008,Solidaridad.,2015
+Puebla,21001,Acajete.,2018
+Puebla,21019,Atlixco.,2018
+Puebla,21041,Cuautlancingo.,2018
+Puebla,21071,Huauchinango.,2018
+Puebla,21085,Izúcar de Matamoros.,2018
+Puebla,21132,San Martín Texmelucan.,2018
+Puebla,21154,Tecamachalco.,2018
+Puebla,21156,Tehuacán.,2018
+Puebla,21164,Tepeaca.,2018
+Puebla,21186,Tlatlauquitepec.,2018
+Querétaro,22006,Corregidora.,2018
+San Luis Potosí,24013,Ciudad Valles.,2018
+Sinaloa,25010,El Fuerte.,2018
+Sinaloa,25011,Guasave.,2018
+San Luis Potosí,24035,Soledad de Graciano Sánchez.,2015
+Sinaloa,25001,Ahome.,2015
+Sinaloa,25006,Culiacán.,2015
+Sinaloa,25012,Mazatlán.,2015
+Sonora,26002,Agua Prieta.,2015
+Sonora,26017,Caborca.,2015
+Sonora,26018,Cajeme.,2015
+Sonora,26029,Guaymas.,2015
+Sonora,26030,Hermosillo.,2015
+Sonora,26043,Nogales.,2015
+Tabasco,27004,Centro.,2015
+Tabasco,27013,Nacajuca.,2015
+Tamaulipas,28003,Altamira.,2015
+Tamaulipas,28022,Matamoros.,2015
+Tamaulipas,28027,Nuevo Laredo.,2015
+Tamaulipas,28038,Tampico.,2015
+Tamaulipas,28041,Victoria.,2015
+Tlaxcala,29033,Tlaxcala.,2015
+Veracruz,30028,Boca del Río.,2015
+Veracruz,30039,Coatzacoalcos.,2015
+Veracruz,30048,Cosoleacaque.,2015
+Veracruz,30087,Xalapa.,2015
+Veracruz,30105,Medellín.,2015
+Veracruz,30108,Minatitlán.,2015
+Veracruz,30112,Naolinco.,2015
+Veracruz,30193,Veracruz.,2015
+Yucatán,31041,Kanasín.,2015
+Yucatán,31050,Mérida.,2015
+Yucatán,31101,Umán.,2015
+Zacatecas,32017,Guadalupe.,2015
+Zacatecas,32056,Zacatecas.,2015
+Aguascalientes,01005,Jesús María.,2018
+Baja California,02001,Ensenada.,2018
+Baja California,02003,Tecate.,2018
+Baja California,02005,Playas de Rosarito.,2018
+Baja California Sur,03008,Los Cabos.,2018
+Campeche,04003,Carmen.,2018
+Sonora,26042,Navojoa.,2018
+Sonora,26055,San Luis Río Colorado.,2018
+Tabasco,27002,Cárdenas.,2018
+Tabasco,27003,Centla.,2018
+Tabasco,27005,Comalcalco.,2018
+Tabasco,27006,Cunduacán.,2018
+Tabasco,27008,Huimanguillo.,2018
+Tabasco,27012,Macuspana.,2018
+Tamaulipas,28009,Ciudad Madero.,2018
+Tamaulipas,28021,El Mante.,2018
+Tamaulipas,28033,Río Bravo.,2018
+Tlaxcala,29005,Apizaco.,2018
+Tlaxcala,29010,Chiautempan.,2018
+Tlaxcala,29025,San Pablo del Monte.,2018
+Veracruz,30044,Córdoba.,2018
+Veracruz,30102,Martínez de la Torre.,2018
+Veracruz,30118,Orizaba.,2018
+Veracruz,30123,Pánuco.,2018
+Veracruz,30124,Papantla.,2018
+Veracruz,30131,Poza Rica de Hidalgo.,2018
+Veracruz,30141,San Andrés Tuxtla.,2018
+Veracruz,30155,Tantoyuca.,2018
+Veracruz,30160,Álamo Temapache.,2018
+Veracruz,30174,Tierra Blanca.,2018
+Veracruz,30189,Tuxpan.,2018
+Yucatán,31059,Progreso.,2018
+Zacatecas,32010,Fresnillo.,2018
