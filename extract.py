@@ -16,9 +16,6 @@ from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.pdfpage import PDFPage
 from pdfminer.pdfparser import PDFParser
 
-import matplotlib.pyplot as plt
-
-
 RE_EX = r'(tabla).*\d.*Síntesis de resultados por dimensión y subdimensión'
 
 
@@ -44,25 +41,19 @@ def extract_table(path):
 
             page_num += 1
             if pages and page_num - pages[-1] > 1:
-                print('Searching break.')
+                print('-> Searching break.')
                 break
 
-    print('Generating table in', pages)
+    print('\nGenerating table in', pages)
     table = tabula.read_pdf(path, pages=pages, pandas_options={'header': None})
     # return extract_text(path, pages)
-    final_table = table.copy()
-    # if isinstance(table, list):
-        # print('table:', table, '\n\n\n')
-        # final_table = table[0].rename(columns={
-        #     table[0].columns[i]: l for i, l in enumerate(columns)})
-        # for current in table[1:]:
-        #     if len(final_table.columns) != len(current.columns):
-        #         print(f'Incompatible tables in {path}')
-        #         continue
+    if len(table) != len(pages):
+        print(f'\n\n{len(table)} tables in pages {pages} with default method.')
+        print('Executing alternative method!\n')
+        table = extract_text(path, pages)
+        table = isolate(table)
+        table = add_separations(table)
 
-        #     current = current.rename(columns={
-        #         current.columns[i]: l for i, l in enumerate(columns)})
-        #     final_table = final_table.append(current)
     return table
 
 
@@ -81,9 +72,11 @@ def extract_text(path, pages):
 def isolate(pages):
     """ Remove irrelevant content """
 
-    filter_regex = [
+    cut_regex = [
         r' *Consolidar políticas *Fortalecer políticas *Priorizar políticas.*',
         r' *urbanas +urbanas +urbanas.*']
+    filter_regex = [
+            re.compile(r'^ *\w+ *$')]
 
     c_ix = 0
     while c_ix < len(pages):
@@ -93,11 +86,16 @@ def isolate(pages):
                 pages[c_ix] = pages[c_ix][ln_ix+1:]
                 break
 
-        for rgex in filter_regex:
+        for rgex in cut_regex:
             for ln_ix, line in enumerate(pages[c_ix]):
                 if re.search(rgex, line, re.IGNORECASE):
                     pages[c_ix] = pages[c_ix][:ln_ix]
                     break
+
+        pages[c_ix] = list(filter(
+            lambda line: sum([
+                rg.match(line) is not None for rg in filter_regex]) == 0,
+            pages[c_ix]))
 
         pages[c_ix] = '\n'.join(pages[c_ix])
         c_ix += 1
@@ -187,13 +185,28 @@ def add_separations(pages, space_tolerance=3):
     return pages
 
 
+def save_datasets(ds, pdf_name, directory=''):
+    """ Save the DataSets as CSV """
+    print(f'{directory}{pdf_name.split("/")[-1].replace(".pdf", "")}_0..{len(ds)}.csv')
+    list(map(
+        lambda tb: tb[1].to_csv(
+            f'{directory}{pdf_name.split("/")[-1].replace(".pdf", "")}_{tb[0]}.csv',
+            index=False),
+        enumerate(ds)))
+
+
+def extract_and_save(file_path, out_dir=''):
+    """ Extract a table from a pdf file and save the resulting dataset """
+    save_datasets(
+            extract_table(file_path),
+            file_path,
+            out_dir)
+
+
 if __name__ == '__main__':
-    TB_PATH = 'corrupt/05033_San_Pedro.pdf'
-    my_table = extract_table(TB_PATH)
-    my_table = isolate(my_table)
-    my_table = add_separations(my_table)
+    # file_path = 'corrupt/05033_San_Pedro.pdf'
+    path = 'pdfs/2018_30118_Orizaba.pdf'
+    my_table = extract_table(path)
+
+    print(len(my_table), 'tables')
     print(my_table[0])
-    """print(my_table.head())
-    print(my_table.tail())
-    print(my_table.columns)
-    print(my_table.shape)"""
