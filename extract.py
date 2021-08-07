@@ -45,14 +45,14 @@ def extract_table(path):
                 break
 
     print('\nGenerating table in', pages)
-    table = tabula.read_pdf(path, pages=pages, pandas_options={'header': None})
+    # table = tabula.read_pdf(path, pages=pages, pandas_options={'header': None})
     # return extract_text(path, pages)
-    if len(table) != len(pages):
-        print(f'\n\n{len(table)} tables in pages {pages} with default method.')
-        print('Executing alternative method!\n')
-        table = extract_text(path, pages)
-        table = isolate(table)
-        table = add_separations(table)
+    # if len(table) != len(pages):
+    # print(f'\n\n{len(table)} tables in pages {pages} with default method.')
+    # print('Executing alternative method!\n')
+    table = extract_text(path, pages)
+    table = isolate(table)
+    table = add_separations(table)
 
     return table
 
@@ -205,7 +205,7 @@ def extract_and_save(file_path, out_dir=''):
 
 if __name__ == '__main__':
     # file_path = 'corrupt/05033_San_Pedro.pdf'
-    path = 'pdfs/2018_30118_Orizaba.pdf'
+    path = 'pdfs/2015_06009_Tecomán.pdf'
     my_table = extract_table(path)
 
     print(len(my_table), 'tables')
