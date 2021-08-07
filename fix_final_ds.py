@@ -13,4 +13,5 @@ ds = pd.pivot(
         columns='desc',
         values='calificacion')
 
+ds = ds.reset_index()
 ds.to_csv('CPI_Mex_full.csv', index=False)
