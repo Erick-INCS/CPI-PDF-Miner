@@ -167,5 +167,6 @@ if __name__ == '__main__':
     )
 
     the_dataset = the_dataset.reset_index()
-    the_dataset.to_csv('CPI_Mex.csv')
+    the_dataset = the_dataset.drop(['index'], axis=1)
+    the_dataset.to_csv('CPI_Mex.csv', index=False)
     print('Dataset', the_dataset, 'saved')
