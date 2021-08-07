@@ -3,17 +3,14 @@
 
 import pandas as pd
 
-
 ds = pd.read_csv('./CPI_Mex.csv')
+estados = pd.read_csv('Names.csv')
 
-# Asegurarse que todos los estados tengan las mismas categorias
-categories = ds['desc'].unique()
-estados = ds['estado'].unique()
+ds = ds.join(estados[['clave', 'estado']].set_index('clave'), on='clave')
+ds = pd.pivot(
+        ds,
+        index=['estado', 'municipio'],
+        columns='desc',
+        values='calificacion')
 
-for est in estados:
-    for cat in categories:
-        if len(ds[(ds['estado'] == est) & (ds['desc'] == cat)]) > 1:
-            print(est, cat)
-
-
-# pd.pivot(ds.groupby(['estado', 'desc']), index='estado', columns='desc', values='municipio')
+ds.to_csv('CPI_Mex_full.csv', index=False)
