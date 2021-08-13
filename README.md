@@ -32,5 +32,6 @@ The command to download the files is as follows:
 ## Generate the final dataset
 ```bash
 ./preprocess.py
+./fix_final_ds.py
 ```
 After executing the above command the file `CPI_Mex.csv` is generated.
