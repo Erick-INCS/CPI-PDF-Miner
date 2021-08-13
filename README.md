@@ -34,4 +34,4 @@ The command to download the files is as follows:
 ./preprocess.py
 ./fix_final_ds.py
 ```
-After executing the above command the file `CPI_Mex.csv` is generated.
+After executing the above command the files `CPI_Mex.csv` and `CPI_Mex_full.csv` are generated.
