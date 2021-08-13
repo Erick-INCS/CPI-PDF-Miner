@@ -173,11 +173,14 @@ if __name__ == '__main__':
                 lambda zp: join_datasets(*zp),
                 zip(datasets, ds_names, range(len(ds_names)), ds_claves,
                     ds_periodos))
-            )
+                 )
     )
 
     the_dataset = the_dataset.reset_index()
     the_dataset = the_dataset.drop(['index'], axis=1)
     the_dataset.to_csv('CPI_Mex.csv', index=False)
     print('Dataset', the_dataset, 'saved')
-    # join_datasets(datasets.iloc[100], ds_names[100])
+    """
+    print(join_datasets(datasets.iloc[4], ds_names[4], 4, ds_claves[4],
+        ds_periodos[4]).head(27))
+    """

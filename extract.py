@@ -2,19 +2,16 @@
 """ Extract a single talbe from pdf """
 
 import re
-import tabula
 import pdftotext
 import pandas as pd
-from collections import Counter
 from io import StringIO
-from sklearn.cluster import AffinityPropagation
-from statistics import mode
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
 from pdfminer.pdfdocument import PDFDocument
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.pdfpage import PDFPage
 from pdfminer.pdfparser import PDFParser
+from termcolor import colored
 
 RE_EX = r'(tabla).*\d.*Síntesis de resultados por dimensión y subdimensión'
 
@@ -45,15 +42,12 @@ def extract_table(path):
                 break
 
     print('\nGenerating table in', pages)
-    # table = tabula.read_pdf(path, pages=pages, pandas_options={'header': None})
-    # return extract_text(path, pages)
-    # if len(table) != len(pages):
-    # print(f'\n\n{len(table)} tables in pages {pages} with default method.')
-    # print('Executing alternative method!\n')
     table = extract_text(path, pages)
-    print(table[0])
     table = isolate(table)
+    # print(table[0])
     table = add_separations(table)
+    # print('-' * 70)
+    # print(table[0])
 
     return table
 
@@ -116,7 +110,6 @@ def squeeze(a_list):
         length -= 1
     return a_list
 
-
 def add_separations(pages, space_tolerance=3):
     """ A bad way to add row separations """
     for p_ix, page in enumerate(pages):
@@ -130,6 +123,8 @@ def add_separations(pages, space_tolerance=3):
                 filter(lambda e: e, ix_ln[1].split('|')))),
             enumerate(page_sep_ixs)))
         squeeze(page_sep_ixs)
+
+        # print(page_sep_ixs, '\n', '~' * 100)
 
         tb_cols = {}
         for num in set(page_sep_ixs):
@@ -207,7 +202,8 @@ def extract_and_save(file_path, out_dir=''):
 if __name__ == '__main__':
     # path = 'pdfs/2018_11014_Dolores_Hidalgo_Cuna_de_la_Independencia_Nacional.pdf'
     # path = 'pdfs/2018_15070_La_Paz.pdf'
-    path = 'pdfs/2015_03003_La_Paz.pdf'
+    # path = 'pdfs/2015_03003_La_Paz.pdf'
+    path = 'pdfs/2015_02004_Tijuana.pdf'
     my_table = extract_table(path)
 
     print(len(my_table), 'tables')
